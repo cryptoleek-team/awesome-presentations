@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <p align="center">
   <a href="https://revealjs.com">
   <img src="https://hakim-static.s3.amazonaws.com/reveal-js/logo/v1/reveal-black-text.svg" alt="reveal.js" width="450">
@@ -26,3 +27,6 @@ Want to create your presentation using a visual editor? Try the official reveal.
 MIT licensed
 
 Copyright (C) 2011-2021 Hakim El Hattab, https://hakim.se
+=======
+# awesome-presentations
+>>>>>>> 184fc84673f5d229b6f23f7f9c973cc702406c4f

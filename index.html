@@ -1,40 +1,36 @@
 <!doctype html>
-<html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<html lang="en">
 
-		<title>reveal.js</title>
+<head>
+  <meta charset="utf-8">
+  <title>reveal.js - Barebones</title>
+  <link rel="stylesheet" href="dist/reset.css">
+  <link rel="stylesheet" href="dist/reveal.css">
+  <link rel="stylesheet" href="dist/theme/black.css" id="theme">
+</head>
 
-		<link rel="stylesheet" href="dist/reset.css">
-		<link rel="stylesheet" href="dist/reveal.css">
-		<link rel="stylesheet" href="dist/theme/black.css">
+<body>
 
-		<!-- Theme used for syntax highlighted code -->
-		<link rel="stylesheet" href="plugin/highlight/monokai.css">
-	</head>
-	<body>
-		<div class="reveal">
-			<div class="slides">
-				<section>Slide 1</section>
-				<section>Slide 2</section>
-			</div>
-		</div>
+  <div class="reveal">
+    <div class="slides">
+      <section>
+        <h2>📜 Awesome presentations by ETM Fintech</h2>
+        <ul style="font-size: 30px;">
+          <li> <a href="#">💰 Defi Hackthon Presentation</a></li>
+          <li> <a href="#">🧑‍🤝‍🧑 LeekDao Presentation</a></li>
+          <li> <a href="#">ETM FUND Presentation</a></li>
+          <li> <a href="#">Arbing Bot Presentation</a> </li>
+          <li> <a href="./bha-nft.html">Blockchain Hub Australia NFT presentation (08/07/2021)</a> </li>
+        </ul>
+      </section>
+    </div>
+  </div>
 
-		<script src="dist/reveal.js"></script>
-		<script src="plugin/notes/notes.js"></script>
-		<script src="plugin/markdown/markdown.js"></script>
-		<script src="plugin/highlight/highlight.js"></script>
-		<script>
-			// More info about initialization & config:
-			// - https://revealjs.com/initialization/
-			// - https://revealjs.com/config/
-			Reveal.initialize({
-				hash: true,
+  <script src="../dist/reveal.js"></script>
+  <script>
+    Reveal.initialize();
+  </script>
 
-				// Learn about plugins: https://revealjs.com/plugins/
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
-		</script>
-	</body>
+</body>
+
 </html>
