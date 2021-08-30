@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Blockchain HUB Australia, NFT Presentation</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="./dist/reveal.css">
+	<link rel="stylesheet" href="./dist/theme/black.css" id="theme">
+	<link rel="stylesheet" href="./plugin/highlight/monokai.css">
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<div class="slides">
+
+			<section>
+				<h3>
+					🔱 London Hard Fork a.k.a EIP 1559 is coming ...
+				</h3>
+			</section>
+
+			<section>
+				<h3>
+					Current Model / Bid Model
+				</h3>
+				<img
+					src="./images/eip1559/etherscan_gastracker.png"
+					width="100%"
+					style="margin: 10px;"
+					alt="">
+			</section>
+
+			<section>
+				<h3>Bid Model Drawback</h3>
+				<ul>
+					<li>All Fees go to miner</li>
+					<li>No way to guarantee txns go through</li>
+						<ul>
+							<li>Txn spike on airdrops</li>
+						</ul>
+					<li>Overpayment (no gas refund)</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>EIP 1559 - New Fee Structure</h3>
+				<img src="./images/eip1559/fee_structure.png" style="max-width:30%; float: left;" alt="">
+				<p>A. Base Fee (Burnt)</p>
+				<ul style="float:right;">
+					<li>Set by ethereum always burned</li>
+					<li>Minimum fee for the block</li>
+					<li>Varies by network demand</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>EIP 1559 - New Fee Structure</h3>
+				<img src="./images/eip1559/fee_structure.png" style="max-width:30%; float: left;" alt="">
+				<p>B. Priority Fee (Tip)</p>
+				<ul style="float:right;">
+					<li>Set by users and paid to miner</li>
+					<li>By default 2 Gwei, may change</li>
+					<li>Higher the fee, Faster to process</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>EIP 1559 - New Fee Structure</h3>
+				<img src="./images/eip1559/fee_structure.png" style="max-width:30%; float: left;" alt="">
+				<p>C. Max Fee</p>
+				<ul style="float:right; font-size: 30px;">
+					<li>Max Fee the user is willing to pay</li>
+					<li>No more overbidding, gurantee txns</li>
+					<li>Extra fees will be refunded (Max - tip - base)</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>EIP 1559 - Adapt block size</h3>
+				<img src="./images/eip1559/adapt_blocksize.png" style="max-width:60%;" alt="">
+				<ul style="font-size: 30px;">
+					<li>Block Size dynamic changes</li>
+					<li>Smooth gas price volatility</li>
+				</ul>
+			</section>
+
+			<section>
+				<h3>Benefits</h3>
+				<ul style="font-size: 30px;">
+					<li>Users can gurantee txn mined and return overpaid gas</li>
+					<li>More sustainable ecosystem, classic BTC problem</li>
+					<li>May bring deflationary model to ether and long term benefits</li>
+				</ul>
+			</section>
+
+			<section>
+				<h2>🤟 Want learn More ???</h2>
+			</section>
+
+			<section>
+				<iframe data-autoplay width="1024px" height="600px" src="https://watchtheburn.com/" frameborder="0"></iframe>
+				<p style="font-size: 30px; margin: 0 !important; padding: 0 !important;">
+					<span style="padding-right: 5px;">❤️</span>
+					<span style="padding-right: 5px;"> <img style="position: relative; top: 15px; width: 30px;" src="./images/subscribe.jpeg" alt=""> </span>
+					<span >🔔</span>
+				</p>
+			</section>
+
+		</div>
+
+	</div>
+
+	<script src="./dist/reveal.js"></script>
+	<script>
+		Reveal.initialize({ hash: true });
+	</script>
+
+</body>
+
+</html>
