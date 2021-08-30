@@ -1,0 +1,494 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title>MEV and Flashbots</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/monokai.css">
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <div class="slides">
+      <section>
+        <h3>
+          ⛏️ MEV + 🤖 Flashbots
+        </h3>
+        <blockquote style="font-size: smaller;" cite="https://medium.com/flashbots/quantifying-mev-introducing-mev-explore-v0-5ccbee0f6d02">
+          &ldquo;We took the first deep look at MEV and released our findings through MEV-Explore, a public dashboard and live MEV
+          transactions explorer. After scraping the Ethereum blockchain starting from the first block of 2020, we’ve classified
+          more than 1.3M MEV transactions and found a total of at least $708M worth of Extracted MEV since Jan 1st 2020, as well
+          as $12.6M wasted gas fees on failed MEV transactions, equivalent to 6,234 Ethereum blocks of wasted blockspace.&rdquo;
+        </blockquote>
+        <p>
+          By @CryptoLeek
+        </p>
+      </section>
+      <section>
+        <h3>
+          ⛏️ How does Miner work?
+        </h3>
+        <p style="font-size: small;">To understand MEV, we need to understand how does miner pick up txns.</p>
+        <img src="./images/mev/mev-1.png" alt="mev">
+      </section>
+      <section>
+        <h3>
+          ⛏️ What's MEV?
+        </h3>
+        <p style="font-size: smaller;">
+          Miner Extractable Value (MEV), where blockchain miners are able to extract profits at the expense of users by
+          arbitrarily reordering, including, or excluding transactions within a block. Miners can determine the order
+          of when transactions are processed on the blockchain and exploit that power to their advantage.
+        </p>
+        <p style="font-size: small;">The <a href="https://arxiv.org/pdf/1904.05234.pdf">Flash Boys 2.0 paper</a> coined the term "miner extractable value" (MEV)</p>
+      </section>
+      <section>
+        <h3>
+          ⛏️ Common MEV Actions
+        </h3>
+        <p>
+          <ul>
+            <li class="fragment">Front Running</li>
+            <li class="fragment">Sandwich Bot</li>
+            <li class="fragment">Back Running</li>
+          </ul>
+        </p>
+      </section>
+      <section>
+        <h3>
+          ⛏️ Front Running
+        </h3>
+        <p>
+          Front Running is a way to manipulate txns sequences by peeping the mempool. And the front runners can initiate a same transaction with higher gas fee to benefit themselves.
+        </p>
+      </section>
+      <section>
+        <h3>⛏️ Front Running II - Typical Examples</h3>
+        <ul>
+          <li class="fragment">IDO Sniping Bot</li>
+          <li class="fragment">Liquidity Bot</li>
+          <li class="fragment">Liquidation Bot</li>
+          <li class="fragment">Harvest Bot</li>
+        </ul>
+      </section>
+      <section>
+        <h3>
+          ⛏️ Front Running III - Further Reading
+        </h3>
+        <div style=" display: flex; flex-direction: row; justify-content: center;">
+          <p style="width: 50%;">
+            An epic story to read and understand more about Front Running in general.
+            <bold><a href="https://www.paradigm.xyz/2020/08/ethereum-is-a-dark-forest/">Ethereum is a Dark Forest</a></bold>.
+          </p>
+          <p style="width: 20%;">
+            <img src="./images/mev/darkforrest.jpeg" alt="">
+          </p>
+        </div>
+      </section>
+      <section>
+        <h3>
+          ⛏️ Sandwich Bot
+        </h3>
+        <p>
+          Sandwich Bot Attack is a technique, which usually follows a similar course:
+          <ul style="font-size: smaller;">
+            <li class="fragment">
+              1. Detect the victim’s transaction.
+            </li>
+            <li class="fragment">
+              2. Front-Run the victim’s transaction.
+            </li>
+            <li class="fragment">
+              3. Victim transacts and suffers higher slippage.
+            </li>
+            <li class="fragment">
+              4. The attacker then back-runs the victim.
+            </li>
+          </ul>
+        </p>
+      </section>
+      <section>
+        <h3>
+          ⛏️ Sandwich Bot II - A simple Diagram
+        </h3>
+        <img src="./images/mev/sandwich-attack.png" alt="">
+      </section>
+      <section>
+        <h3>
+          ⛏️ Sandwich Bot III - Further Reading
+        </h3>
+        <p>
+          Bad Sandwich: DeFi Trader 'Poisons' Front-Running Miners for $250K Profit. <a href="https://github.com/Defi-Cartel/salmonella">Wrecking sandwich traders for fun and profit.</a>
+        </p>
+      </section>
+      <section>
+        <h3>
+         ⛏️ Back Running
+        </h3>
+        <p>
+          Back Running is similar to Front Running, but vice versa. A good article to read is <a href="https://amanusk.medium.com/the-fastest-draw-on-the-blockchain-bzrx-example-6bd19fabdbe1">The fastest draw on the Blockchain: Ethereum Backrunning</a>
+        </p>
+      </section>
+
+      <section>
+        <h3>⛏️ In Action</h3>
+        <p class="fragment">Now start to build MEV and Get 🤑🤑🤑</p>
+        <p class="fragment">1st, set up your own Node by using Geth</p>
+        <p class="fragment">2nd, peek the mempool ...</p>
+        <p class="fragment">❌❌❌, I am kidding. It's kinda bad.</p>
+        <p class="fragment">Why? 🤔</p>
+      </section>
+
+      <section>
+        <h3>⛏️ It's bad for Ethereum</h3>
+        <ul>
+          <li class="fragment">An adversarial env and hard to beat others. ☣️☣️☣️</li>
+          <li class="fragment">Gas Bidding War ⚔️⚔️⚔️</li>
+          <li class="fragment">Polluted the ethereum states with a lot of garbage / failed txns 🚨🚨🚨</li>
+          <li class="fragment">And it's killing ethereum. ☠️☠️☠️</li>
+        </ul>
+      </section>
+
+
+      <section>
+        <h3>🤖 FlashBots</h3>
+        <p class="fragment" style="font-size: smaller;"><span style="color: yellow;">Official:</span> Flashbots is a research and development organization working on mitigating the negative externalities of current MEV
+        extraction techniques and avoiding the existential risks MEV could cause to state-rich blockchains like Ethereum.</p>
+        <p class="fragment" style="font-size: smaller;">
+          <span style="color: yellow;">Plain:</span> We can't fix MEV, then we work with it. To enable a permisionless, transparent and fair ecosystem for MEV extraction.
+        </p>
+      </section>
+
+      <section>
+        <h3>🤖 Official Offerings</h3>
+        <ul>
+          <li class="fragment">Flashbots Auction</li>
+          <li class="fragment">Flashbots Data</li>
+          <li class="fragment">Flashbots Research</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>🤖 Flashbots Auction</h3>
+        <ul style="font-size: smaller;">
+          <li class="fragment">A permissionless, transparent, and fair ecosystem for efficient MEV extraction and frontrunning protection</li>
+          <li class="fragment">A private communication channel between users and miners for communicating preferred transaction order.</li>
+          <li class="fragment">A mev-geth, a patch on top of the go-ethereum client, along with the mev-relay, a transaction bundle relayer</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>🤖 MEV-Geth Miner</h3>
+        <p style="font-size: smaller;">
+        A miner may profit from it by accepting MEV bundles either via direct <b><i>block.coinbase</i></b> payments, or with <b><i>extra transactions</i></b> that pay the block's coinbase</p>
+        <table>
+          <thead style="font-size: 30px;">
+            <tr>
+              <th>Guarantee</th>
+              <th>PGA</th>
+              <th>Dark-txPool</th>
+              <th>MEV-Geth</th>
+            </tr>
+          </thead>
+          <tbody style="font-size: 26px;">
+            <tr>
+              <td>Permissionless</td>
+              <td>✅</td>
+              <td>❌</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Efficient</td>
+              <td>❌</td>
+              <td>❌</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Pre-trade privacy</td>
+              <td>❌</td>
+              <td>✅</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Failed trade privacy</td>
+              <td>❌</td>
+              <td>❌</td>
+              <td>✅</td>
+            </tr>
+            <tr>
+              <td>Complete privacy</td>
+              <td>❌</td>
+              <td>❌</td>
+              <td>❌</td>
+            </tr>
+            <tr>
+              <td>Finality</td>
+              <td>❌</td>
+              <td>❌</td>
+              <td>❌</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section>
+        <h3>🤖 Searcher (More Relevant) </h3>
+        <p>
+          Searcher is a term describing Etherem bot operators / users looking for fast, risk controlled or frontrunning protected bundled-txn execution via Flashbots MEV-Relay with out disclosing txns info on mempool by sending enough GAS or brbing miners to send $ETH to coinbase via <b><i>smart contract</i></b>::
+          <pre>block.coinbase.transfer(_ethAmountToCoinbase);</pre>
+        </p>
+      </section>
+
+      <section>
+        <h3>🤖 Searcher II Use cases </h3>
+        <ul style="font-size: smaller;">
+          <li class="fragment">
+            Bot operators looking for fast, and risk free access to blockspace (eg. arbitrage and liquidation bots)
+          </li>
+          <li class="fragment">
+            Ethereum users looking for frontrunning protection on their transactions (eg. AMM traders)
+          </li>
+          <li class="fragment">
+            Ethereum Dapps with advanced use cases like account abstraction or gasless transactions (eg. <a href="https://tornado.cash/">tornado.cash</a>,
+            <a href="https://mistx.io/">mistX</a> and <a href="https://cowswap.exchange/">cowswap</a>)
+          </li>
+        </ul>
+        </p>
+      </section>
+
+      <section>
+        <h3>🤖 Flashbots Data</h3>
+        <ul>
+          <li class="fragment">
+            <a href="https://explore.flashbots.net/">MEV-Explore v0</a> a public dashboard and live transaction explorer for MEV transactions
+          </li>
+          <li class="fragment">
+            <a href="https://dashboard.flashbots.net/">Flashbots dashboard</a> a public dashboard of the activity taking place on Flashbots
+          </li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>🤖 Flashbots MEV-Explore v0</h3>
+        <iframe data-autoplay width="1024px" height="600px" src="https://explore.flashbots.net/" frameborder="0"></iframe>
+      </section>
+
+      <section>
+        <h3>🤖 Flashbots dashboard</h3>
+        <iframe data-autoplay width="1024px" height="600px" src="https://dashboard.flashbots.net/" frameborder="0"></iframe>
+      </section>
+
+      <section>
+        <h3>🤖 Flashbots Research</h3>
+        <p>A research hub for MEV, tackling and uncovering questions relevant to the short, medium and long-term future of the
+        ecosystem.</p>
+        <div>
+          <ul>
+            <li class="fragment"><a href="https://hackmd.io/@flashbots/mev-in-eth2">MEV in eth2 - an early exploration</a></li>
+            <li class="fragment"><a href="https://hackmd.io/@flashbots/quantifying-REV">Quantifying Realized Extractable Value</a></li>
+            <li class="fragment"><a href="https://ethresear.ch/t/mev-sgx-a-sealed-bid-mev-auction-design/9677">A sealed bid MEV auction design</a></li>
+          </ul>
+        </div>
+      </section>
+
+      <section>
+        <h3>🤖 A real horo story </h3>
+        <p style="font-size: smaller;">
+          Blockchain is a very adversarial env. There are lots of phishing sites and impersonators try to steal your private
+          keys. One of my community member got phished and exposed his private key. All Ethers / ERC20 Tokens have been transfered out
+          immediately. However, he still has 2000 sushi vested in the farming pool. How can we save him from desperate?
+        </p>
+      </section>
+
+      <section>
+        <h3>🤖 A taste of flashbot</h3>
+        <p style="font-size: smaller;">
+          A simple Flashbots "searcher" for submitting a transaction from an executor account, but paying
+          for the transaction from a sponsor account. This is accomplished by submitting a Flashbots transaction bundle, with the
+          first "sponsor" transaction paying the "executor" wallet in ETH, followed by a series of executor transactions that
+          spend this newly received ETH on gas fees.
+        </p>
+      </section>
+
+      <section>
+        <h3>🤖 Setup </h3>
+        <p>
+         We have 3 seperate accounts. One account is hacked account, another is sponsor account (who is gonna provide gas), last is the account the erc20 token will be transfered in.
+        </p>
+
+      </section>
+      <section>
+        <h3>🤖 Setup II </h3>
+        <p style="font-size: smaller;">
+          Left (Hacked Account) with no $ETH, Middle (Sponsor Account) and Right is to recieve the 5000 TTT from Hacked Account
+        </p>
+        <div style="display: flex; flex-direction: row; justify-content: space-around">
+          <img style="width: 40%; height: 50%; padding: 10px;" src="./images/mev/hacked.png" alt="hacked">
+          <img style="width: 40%; height: 50%; padding: 10px;" src="./images/mev/sponsor.png" alt="sponsor">
+          <img style="width: 40%; height: 50%; padding: 10px;" src="./images/mev/recipient.png" alt="recipient">
+        </div>
+      </section>
+
+      <section>
+        <h3>🤖 Coding I</h3>
+        <p style="font-size: smaller;">Connect to Testnet, prepare for wallets and setup TransferERC20 action</p>
+        <pre>
+          <code class="hljs javascript" data-trim contenteditable style="font-size: 18px;">
+          const walletRelay = new Wallet(FLASHBOTS_RELAY_SIGNING_KEY)
+
+          // ======= UNCOMMENT FOR GOERLI ==========
+          const provider = new providers.InfuraProvider(5, process.env.INFURA_API_KEY || '');
+          const flashbotsProvider = await FlashbotsBundleProvider.create(provider, walletRelay,
+          'https://relay-goerli.epheph.com/');
+          // ======= UNCOMMENT FOR GOERLI ==========
+
+          const walletExecutor = new Wallet(PRIVATE_KEY_EXECUTOR);
+          const walletSponsor = new Wallet(PRIVATE_KEY_SPONSOR);
+
+          const block = await provider.getBlock("latest")
+
+          // ======= UNCOMMENT FOR ERC20 TRANSFER ==========
+          const tokenAddress = "0xA766A59AA95Be7B06726650233cAEa39122204bd";
+          const engine: Base = new TransferERC20(provider, walletExecutor.address, RECIPIENT, tokenAddress);
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>🤖 Coding II</h3>
+        <p style="font-size: smaller;">Build the txn bundle, the first txn is to sponsor the second txn. Second tx is to transfer Erc20</p>
+        <pre>
+          <code class="hljs javascript" data-trim contenteditable style="font-size: 18px;">
+          const bundleTransactions: Array = [{
+            transaction: {
+              to: walletExecutor.address,
+              gasPrice: gasPrice,
+              value: gasEstimateTotal.mul(gasPrice),
+              gasLimit: 121000,
+            },
+            signer: walletSponsor
+          },
+          ...sponsoredTransactions.map((transaction, txNumber) => {
+            return {
+              transaction: {
+                ...transaction,
+                gasPrice: gasPrice,
+                gasLimit: gasEstimates[txNumber],
+              },
+              signer: walletExecutor,
+            }
+          })]
+          const signedBundle = await flashbotsProvider.signBundle(bundleTransactions)
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>🤖 Coding III</h3>
+        <p style="font-size: smaller;">Simulation and send bundle!</p>
+        <pre>
+          <code class="hljs javascript" data-trim contenteditable style="font-size: 18px;">
+          provider.on('block', async (blockNumber) => {
+            const simulatedGasPrice = await checkSimulation(flashbotsProvider, signedBundle);
+            const targetBlockNumber = blockNumber + BLOCKS_IN_FUTURE;
+            const bundleResponse = await flashbotsProvider.sendBundle(bundleTransactions, targetBlockNumber);
+            if ('error' in bundleResponse) {
+              throw new Error(bundleResponse.error.message)
+            }
+            const bundleResolution = await bundleResponse.wait()
+            if (bundleResolution === FlashbotsBundleResolution.BundleIncluded) {
+              console.log(`Congrats, included in ${targetBlockNumber}`)
+              process.exit(0)
+            } else if (bundleResolution === FlashbotsBundleResolution.BlockPassedWithoutInclusion) {
+              console.log(`Not included in ${targetBlockNumber}`)
+            } else if (bundleResolution === FlashbotsBundleResolution.AccountNonceTooHigh) {
+              console.log("Nonce too high, bailing")
+              process.exit(1)
+            }
+          })
+          </code>
+        </pre>
+      </section>
+
+      <section>
+        <h3>🤖 Live Demo</h3>
+        <p>Hopefully this can help my friend to save his lost assets ... 🙏🙏🙏</p>
+      </section>
+
+      <section>
+        <h3>🤖 Further Reading</h3>
+        <ul style="font-size: 25px;">
+          <li><a href="https://github.com/flashbots/">Github</a></li>
+          <li><a href="https://docs.flashbots.net/">Doc</a></li>
+          <li><a href="https://www.youtube.com/watch?v=UZ-NNd6yjFM">How to get Front-Run on Ethereum</a> mainnet by Scott Bigelow</li>
+          <li><a href="https://samczsun.com/escaping-the-dark-forest/">Escaping the Dark Forest</a> by samczsun</li>
+          <li><a href="https://www.youtube.com/watch?v=vR1v7AQ8i3k">Frontrunning in DEXs, Miner Extractable Value, and Consensus Instability</a> by Phil Daian at IEEE Symposium on Security and Privacy</li>
+          <li><a href="https://medium.com/flashbots/frontrunning-the-mev-crisis-40629a613752">Flashbots: Frontrunning the MEV Crisis</a> by Flashbots</li>
+          <li><a href="https://www.youtube.com/watch?v=tv0CkmcoGkM">ETHOnline - Phil & Georgios Talk Miner Extractable Value</a></li>
+          <li><a href="https://medium.com/flashbots/quantifying-mev-introducing-mev-explore-v0-5ccbee0f6d02"></a>Quantifying MEV: Introducing MEV-Explore v0 by Flashbots</a></li>
+          <li>You can check out a full list of MEV resources in our <a href="https://github.com/flashbots/mev-research/blob/main/resources.md">Research Vault.</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h3><img style="position: relative; top: 28px;" src="https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png"/> Chainlink MEV Solution</h3>
+        <p style="font-size: smaller;">Chainlink is developing Fair Sequencing Services (FSS)—an MEV solution that uses a decentralized oracle network to fairly order transactions sent to an on-chain smart contract. By separating the ability to order transactions from the ability to produce blocks, malicious value extraction such as frontrunning can be prevented through predefined ordering
+        policies.</p>
+      </section>
+
+      <section>
+        <h3><img style="position: relative; top: 28px;"
+            src="https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png" /> More Reading on Chainlink FSS </h3>
+        <p>FSS is still under development, shall give a in-depth look once it's into mature state.</p>
+        <ul style="font-size: smaller;">
+          <li>
+            <a href="https://blog.chain.link/what-is-miner-extractable-value-mev/">Solving MEV: Chainlink Fair Sequencing
+              Services</a>
+          </li>
+          <li>
+            <a href="https://blog.chain.link/chainlink-fair-sequencing-services-enabling-a-provably-fair-defi-ecosystem/">Fair
+              Sequencing Services: Enabling a Provably Fair DeFi Ecosystem</a>
+          </li>
+        </ul>
+      </section>
+      <section>
+        <h2>👍🏻 Q & A</h2>
+      </section>
+      <section>
+        <h2>Thanks!</h2>
+        <h2>Please ❤️, ⏩ and 🔔</h2>
+        <p>
+          <img style="position: relative; top: 28px;"
+            src="https://assets.coingecko.com/coins/images/877/small/chainlink-new-logo.png" /> Chainlink
+        </p>
+      </section>
+    </div>
+
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({ hash: true });
+    	Reveal.initialize({
+          controls: true,
+          progress: true,
+          center: true,
+          hash: true,
+
+          // Learn about plugins: https://revealjs.com/plugins/
+          plugins: [RevealHighlight]
+        });
+  </script>
+
+</body>
+
+</html>
