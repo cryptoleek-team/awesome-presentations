@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+
+  <title></title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+  <link rel="stylesheet" href="./dist/reveal.css">
+  <link rel="stylesheet" href="./dist/theme/black.css" id="theme">
+  <link rel="stylesheet" href="./plugin/highlight/monokai.css">
+</head>
+
+<body>
+
+  <div class="reveal">
+
+    <div class="slides">
+      <section>
+        <h3>
+          🔮 First Babylon SatLayer BVS Enabled Oracle Protocol          
+        </h3>
+
+        <ul>
+          <li class="fragment">What's BVS?</li>
+          <li class="fragment">Architecture Overview</li>
+          <li class="fragment">Security Model</li>
+          <li class="fragment">Technical Implementation</li>
+          <li class="fragment">Demo & Getting Started</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>🏗️ Architecture Overview</h3>
+        <img style="width: 70%;" src="https://private-user-images.githubusercontent.com/85657906/384227622-3d598375-4aa9-42ba-ba1a-d49168a46dd8.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MzEwNDAzNTIsIm5iZiI6MTczMTA0MDA1MiwicGF0aCI6Ii84NTY1NzkwNi8zODQyMjc2MjItM2Q1OTgzNzUtNGFhOS00MmJhLWJhMWEtZDQ5MTY4YTQ2ZGQ4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDExMDglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMTA4VDA0MjczMlomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTBkODhlMDczN2VlODhjY2IzMTg1YTdjZjQ0OTgwNDgwMTI5ZWQ5MDVhYzQ3NjMzODc3YjkwZGZjYjRkYTZjN2UmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.nBBm-n2OsVKtIOdgsFRcqTMQfdW8m7qdxmCJn2mJDr8" alt="BVS Architecture" class="fragment">
+      </section>
+
+      <section>
+        <h3>🏗️ BVS'sCore Components</h3>
+        <ul>
+          <li class="fragment">Task Manager - Broadcasts & monitors oracle tasks</li>
+          <li class="fragment">Offchain Node Network - Decentralized validator network</li>
+          <li class="fragment">Aggregator Service - Consensus & data aggregation</li>
+          <li class="fragment">Economic shared Delegation - Delegate your BTC to trusted operators</li>
+          <li class="fragment">Reward Distribution - Manages Sats² / token rewards</li>
+          <li class="fragment">Slashing  - Punishes bad actors</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>🔒 Security Model</h3>
+        <ul>
+          <li class="fragment">Bitcoin-Backed Security with BTC collateral</li>
+          <li class="fragment">Multi-Layer Validation (on-chain & off-chain)</li>
+          <li class="fragment">Programmable Slashing Conditions (TODO)</li>
+          <li class="fragment">Verified SatLayer Operator Oversight</li>
+        </ul>
+      </section>
+
+      <section>
+        <h3>🚀 Getting Started</h3>
+        <pre><code class="bash">
+git clone https://github.com/cryptoleek-team/satlayer-bvs-oracle
+cd satlayer-oracle-bvs
+make install
+        </code></pre>
+      </section>
+
+      <section>
+        <h3>📚 Documentation & Resources</h3>
+        <ul>
+          <li class="fragment">Architecture Overview</li>
+          <li class="fragment">API Reference</li>
+          <li class="fragment">Operator Guide</li>          
+        </ul>
+      </section>
+
+      <section>
+        <h2>❤️ Q & A</h2>
+      </section>
+    </div>
+
+  </div>
+
+  <script src="./dist/reveal.js"></script>
+  <script src="./plugin/highlight/highlight.js"></script>
+  <script>
+    Reveal.initialize({ hash: true });
+    Reveal.initialize({
+      controls: true,
+      progress: true,
+      center: true,
+      hash: true,
+
+      // Learn about plugins: https://revealjs.com/plugins/
+      plugins: [RevealHighlight]
+    });
+  </script>
+
+</body>
+
+</html>
